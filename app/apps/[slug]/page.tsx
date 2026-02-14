@@ -39,7 +39,7 @@ export default async function AppPage({ params }: Props) {
   return (
     <main className="relative min-h-screen bg-black text-zinc-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-400">
       
-      {/* --- ATMOSPHERIC CORE (Symmetrical Blur) --- */}
+      {/* --- ATMOSPHERIC CORE --- */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-500/10 blur-[120px] rounded-full animate-pulse" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/5 blur-[150px] rounded-full" />
@@ -54,7 +54,7 @@ export default async function AppPage({ params }: Props) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 pt-32 pb-32">
         
-        {/* SYMMETRICAL RETURN */}
+        {/* RETURN LINK */}
         <Link 
           href="/apps" 
           className="inline-flex items-center gap-6 group mb-20 transition-all duration-500"
@@ -85,7 +85,6 @@ export default async function AppPage({ params }: Props) {
                 {data.title || slug}
               </h1>
 
-              {/* PERFECT SYMMETRY SUBTITLE PANEL */}
               <div className="liquid-glass relative overflow-hidden rounded-[2.5rem] border-l-4 border-l-cyan-500">
                 <div className="flex items-center justify-center p-10 md:p-12">
                    <p className="text-xl md:text-2xl font-light text-zinc-300 leading-relaxed italic text-center max-w-2xl">
@@ -111,64 +110,58 @@ export default async function AppPage({ params }: Props) {
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div className="sticky top-32 space-y-10 animate-in fade-in zoom-in duration-1000">
               
-              {/* THE CUBIC TERMINAL (STRICT 1:1) */}
-              <div className="liquid-glass p-5 rounded-[3.5rem] group">
-                <div className="relative aspect-square w-full rounded-[2.5rem] overflow-hidden bg-zinc-950 border border-white/5">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+              {/* THE UNIFIED GLOW CORE */}
+              <div className="relative p-[1px] rounded-[4rem] group overflow-hidden">
+                {/* ORGANIC SOFT GLOW LAYER - Behind the glass */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-2xl" />
+                
+                <div className="liquid-glass p-4 rounded-[4rem] relative z-10 bg-zinc-950/40 backdrop-blur-3xl border border-white/10">
                   
-                  {hasImage ? (
-                    <img 
-                      src={imgPath} 
-                      alt={data.title} 
-                      className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[2s] ease-out" 
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-white/5 font-black text-7xl italic">VOID</div>
-                  )}
+                  {/* CLEAN APP IMAGE UNIT (No floating badges) */}
+                  <div className="relative aspect-square w-full rounded-[3.2rem] overflow-hidden bg-zinc-950 border border-white/5">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+                    
+                    {hasImage ? (
+                      <img 
+                        src={imgPath} 
+                        alt={data.title} 
+                        className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2.5s] ease-out" 
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-white/5 font-black text-7xl italic">VOID</div>
+                    )}
+                  </div>
 
-                  <div className="absolute top-8 right-8 z-20 flex flex-col gap-3 items-end">
-                    <div className="px-4 py-1.5 liquid-glass rounded-full text-[9px] font-black uppercase tracking-widest text-white shadow-2xl">
-                      REF // {data.version || "1.0.0"}
-                    </div>
-                    <div className="px-4 py-1.5 bg-cyan-400 text-black rounded-full text-[9px] font-black uppercase tracking-widest shadow-[0_0_20px_#0ff]">
-                      Neural_Link
-                    </div>
+                  {/* INTEGRATED SPEC GRID */}
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    {[
+                      { label: 'Deployment', value: data.deployment || 'Edge_Node' },
+                      { label: 'Architecture', value: data.architecture || 'Modular' }
+                    ].map((spec) => (
+                      <div key={spec.label} className="p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/[0.05] flex flex-col items-center text-center group/spec hover:bg-white/[0.08] transition-all duration-500">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-white/20 mb-1 group-hover/spec:text-cyan-400 transition-colors">
+                          {spec.label}
+                        </span>
+                        <span className="text-xs font-bold text-white/90 tracking-wide">
+                          {spec.value}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* CENTERED SPEC GRID */}
-              <div className="grid grid-cols-2 gap-5">
-                {[
-                  { label: 'Deployment', value: data.deployment || 'Edge_Node' },
-                  { label: 'Architecture', value: data.architecture || 'Modular' }
-                ].map((spec) => (
-                  <div key={spec.label} className="liquid-glass p-8 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/5 transition-all duration-500">
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/20 mb-2 group-hover:text-cyan-400 transition-colors">
-                      {spec.label}
-                    </span>
-                    <span className="text-sm font-bold text-white tracking-tight">
-                      {spec.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* LIQUID DOWNLOAD TERMINAL (SYMMETRICAL) */}
-              <button className="relative w-full h-20 group rounded-full overflow-hidden p-[2px] transition-all duration-500 active:scale-95">
+              {/* DOWNLOAD */}
+              <button className="relative w-full h-20 group rounded-full overflow-hidden p-[2px] transition-all duration-500 active:scale-95 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 animate-liquid" />
-                
-                {/* BLACK CORE THAT DISAPPEARS ON HOVER */}
                 <div className="absolute inset-[2px] bg-black rounded-full transition-opacity duration-500 group-hover:opacity-0" />
                 
                 <div className="relative z-10 flex items-center justify-between px-10 w-full h-full">
                   <div className="flex flex-col items-start">
-                    <span className="text-white text-[11px] font-black uppercase tracking-[0.4em] group-hover:text-black transition-colors duration-500">
-                      Execute Download
+                    <span className="text-white text-[13px] font-black uppercase tracking-[0.4em] group-hover:text-black transition-colors duration-500">
+                      Download
                     </span>
-                    <span className="text-white/20 text-[8px] font-mono uppercase tracking-widest group-hover:text-black/40 transition-colors duration-500">
-                      ID: {slug?.slice(0, 8)}_SYS
-                    </span>
+                   
                   </div>
                   
                   <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-black/20 group-hover:bg-black/5 transition-all">
