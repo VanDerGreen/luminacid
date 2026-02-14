@@ -84,3 +84,35 @@ body {
   background: var(--accent-glow);
   color: #fff;
 }
+@keyframes liquid-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-liquid {
+  background-size: 200% auto;
+  animation: liquid-gradient 3s linear infinite;
+}
+@layer components {
+  .liquid-glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
+  }
+}
+
+@keyframes liquid-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-liquid {
+  background-size: 200% auto;
+  animation: liquid-gradient 4s linear infinite;
+}
+
+/* Fix for Safari/Mac scroll bounce and rendering */
+html, body {
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
